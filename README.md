@@ -11,17 +11,22 @@ The purpose of this project was to analyze and visualize data provided by the ex
 
 For this data a pivot table was created. The following fields were used (areas of fields are the headers):
 ##### Filters
--Parent_Category: Created by converting the "Category and Subcategory" column into two by using the "Text to Columns" function in Excel.
--Years: Created by using the Year formula after converting the provided dates from Unix to the Gregorian date format.
+1. Parent_Category 
+   - Created by converting the "Category and Subcategory" column into two by using the "Text to Columns" function in Excel.
+2. Years 
+   - Created by using the Year formula after converting the provided dates from Unix to the Gregorian date format.
 
 ##### Columns
--Outcomes: Data provided for.
+1. Outcomes 
+   - Data provided for.
 
 ##### Rows
--Date_Created_Conversion: Creted by using the formula to convert Unix to Gregorian date format. The formula used was '=(((Launched_At Column/60)/60)/24)+DATE(1970,1,1)'. The 60s refer to seconds and minutes, respectively, and the 24 refers to hours. The "1970,1,1" for the Date formula refers to the year, month, and date respectively.
+1. Date_Created_Conversion 
+   - Creted by using the formula to convert Unix to Gregorian date format. The formula used was `=(((Launched_At Column/60)/60)/24)+DATE(1970,1,1)`. The 60s refer to seconds and minutes, respectively, and the 24 refers to hours. The "1970,1,1" for the Date formula refers to the year, month, and date respectively.
 
 ##### Values
--Count of Outcomes: Data provided for.
+1. Count of Outcomes
+   - Data provided for.
 
 After filtering to only provide "theater" outcomes in the Parent_Category and then sorting and filtering out "live" in the Outcomes Column, the information in the pivot table was used to create this line graph  ![Theater_Outcomes_vs_Launch](Resources/Theater_Outcomes_vs_Launch.png).
 
@@ -29,10 +34,10 @@ After filtering to only provide "theater" outcomes in the Parent_Category and th
 
 The data for this deliverable was more heavily based on Excel formulas. It was also found by further specifying the "Theater" Parent_Category by filtering out everything except "Plays" in the Subcategory. First, eight columns were given headers to give an overview of the information provided. In order, the columns are Goal, Number_Successful, Number_Failed, Number_Canceled, Total_Projects, Percentage_Successful, Percentage_Failed, and Percentage_Canceled. Under the Goal column twelve rows were created to help specify the range of the amount of money asked for Kickstarter campaigns. The range was from less than 1000 asked to 50000 or more. 
 
-The Countifs formula was then used to find the number of successful/failed/canceled campaigns. For example, to determine the amount in the Number_Succesful column, "1000 to 4999" row, this was the formula used: '=COUNTIFS(Outcomes Column, "Successful", Goal Column, ">=1000", Goal Column, "<=4999", Subcategory Column, "Plays")'. This formula pulled all of the information from the selected columns and filtered them by only counting the information that matched the parameters set in quotations. The formula parameters were modified to then find the information for the remaining rows and for the Number_Failed and Number_Canceled columns. 
+The Countifs formula was then used to find the number of successful/failed/canceled campaigns. For example, to determine the amount in the Number_Succesful column, "1000 to 4999" row, this was the formula used: `=COUNTIFS(Outcomes Column, "Successful", Goal Column, ">=1000", Goal Column, "<=4999", Subcategory Column, "Plays")`. This formula pulled all of the information from the selected columns and filtered them by only counting the information that matched the parameters set in quotations. The formula parameters were modified to then find the information for the remaining rows and for the Number_Failed and Number_Canceled columns. 
 
-After finding that information, the '=SUM' formula was used to find Total_Projects. To find the percentages columns, the Round formula was used. For example, to find Percentage_Successful, this was how the formula was set up: '=(ROUND(Number_Successful/Total_Projects*100,0))/100'. This divided the number of successful projects in a row by the total number of projects in that same row, then multiplied it by one hundred, then set to have zero decimals. At this point the percentage was coming out incorrectly, so the formula was modified by dividing it by one hundred to make the correct percentages appear. This formula was then modified for the Percentage_Failed and Percentage_Canceled columns.
-After all of this was done, a line graph was created. It was filtered to only chart the rows of the Goal column on the *x*-axis and the percentage of successful, failed, and canceled projects on the *y*-axis. The line graph can be found at [Outcomes_vs_Goals](Resources/Outcomes_vs_Goals.png).
+After finding that information, the '=SUM' formula was used to find Total_Projects. To find the percentages columns, the Round formula was used. For example, to find Percentage_Successful, this was how the formula was set up: `=(ROUND(Number_Successful/Total_Projects*100,0))/100`. This divided the number of successful projects in a row by the total number of projects in that same row, then multiplied it by one hundred, then set to have zero decimals. At this point the percentage was coming out incorrectly, so the formula was modified by dividing it by one hundred to make the correct percentages appear. This formula was then modified for the Percentage_Failed and Percentage_Canceled columns.
+After all of this was done, a line graph was created. It was filtered to only chart the rows of the Goal column on the *x*-axis and the percentage of successful, failed, and canceled projects on the *y*-axis. The line graph can be found at ![Outcomes_vs_Goals](Resources/Outcomes_vs_Goals.png).
 
 ### Challenges and Difficulties Encountered
 
